@@ -1,0 +1,23 @@
+h1 Search product reviews on walmart.com
+
+= form_tag search_reviews_path do |f|
+  = label_tag :product_id, 'Product ID:'
+  = text_field_tag :product_id, params[:product_id]
+  br
+  = label_tag :text, 'Filter:'
+  = text_field_tag :text, params[:text]
+  br
+  = submit_tag 'Search'
+
+- if @reviews
+  p
+    | Found #{@reviews.count} reviews
+  - if @reviews.any?
+    table
+      tr
+        th review
+      - @reviews.each do |review|
+        tr
+          td= review.text
+  - else
+    | no reviews found

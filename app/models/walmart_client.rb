@@ -15,7 +15,7 @@ class WalmartClient
 
   def download_reviews(product_id)
     # TODO download all
-    url = "http://www.walmart.com/reviews/api/product/#{product_id}?limit=20&page=0&sort=helpful&filters=&showProduct=false"
+    url = "http://www.walmart.com/reviews/api/product/#{product_id}?limit=100&page=0&sort=helpful&filters=&showProduct=false"
     str = RestClient.get url
     json = JSON.parse(str)
     html = json['reviewsHtml']
